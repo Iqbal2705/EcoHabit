@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wpeco"
+    tools:context=".LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Logo EcoHabit -->
+            <ImageView
+                android:id="@+id/logoEcoHabit"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="Logo EcoHabit"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo" />
+
+
+            <!-- Card Login -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="Mulai dari Kebiasaan Kecil\nuntuk Lingkungan yang Lebih Baik"
+                android:textColor="#285C43"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="26dp"
+                app:cardElevation="6dp"
+                app:strokeColor="#E5EBDD"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="center"
+                        android:text="Masuk ke Akun Anda"
+                        android:textColor="#1F5D42"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="center"
+                        android:text="Lanjutkan perjalanan hijau bersama EcoHabit"
+                        android:textColor="#66756C"
+                        android:textSize="10sp" />
+
+                    <!-- Username -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="12dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="Ikon email"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/maillogo" />
+
+                        <EditText
+                            android:id="@+id/edtUser"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/poppins"
+                            android:hint="Email atau Username"
+                            android:inputType="text"
+                            android:padding="0dp"
+                            android:singleLine="true"
+                            android:textColor="#173B2B"
+                            android:textColorHint="#89958D"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <!-- Password -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="12dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="Ikon password"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/keylogo" />
+
+                        <EditText
+                            android:id="@+id/edtPass"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/poppins"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:padding="0dp"
+                            android:singleLine="true"
+                            android:textColor="#173B2B"
+                            android:textColorHint="#89958D"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/btnShowPassword"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginStart="8dp"
+                            android:contentDescription="Tampilkan password"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/eyelogo" />
+
+                    </LinearLayout>
+
+
+                    <!-- Tombol Login -->
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="12dp"
+                        android:backgroundTint="#1F5D42"
+                        android:fontFamily="@font/poppins"
+                        android:text="Masuk"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp" />
+
+                    <!-- Pemisah -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="#D9DED8" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="atau"
+                            android:textColor="#89958D"
+                            android:textSize="11sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="#D9DED8" />
+                    </LinearLayout>
+
+                    <!-- Google -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGoogle"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Masuk dengan Google"
+                        android:textAllCaps="false"
+                        android:textColor="#333333"
+                        android:textSize="11sp"
+                        app:backgroundTint="#FFFFFF"
+                        app:cornerRadius="22dp"
+                        app:icon="@drawable/googlelogo"
+                        app:iconGravity="textStart"
+                        app:iconSize="18dp"
+                        app:iconTint="@null"
+                        app:strokeColor="#D5D9D5"
+                        app:strokeWidth="1dp" />
+
+                    <!-- Apple -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnApple"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="9dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Masuk dengan Apple"
+                        android:textAllCaps="false"
+                        android:textColor="#333333"
+                        android:textSize="11sp"
+                        app:backgroundTint="#FFFFFF"
+                        app:cornerRadius="22dp"
+                        app:icon="@drawable/applelogo"
+                        app:iconGravity="textStart"
+                        app:iconSize="18dp"
+                        app:iconTint="@null"
+                        app:strokeColor="#D5D9D5"
+                        app:strokeWidth="1dp" />
+
+                    <!-- Daftar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Belum punya akun? "
+                            android:textColor="#66756C"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/txtDaftar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Daftar Sekarang"
+                            android:textColor="#4F9D69"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

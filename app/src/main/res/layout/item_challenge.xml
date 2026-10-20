@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/imgChallenge"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="Ilustrasi tantangan"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tnmnchallange" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtChallengeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kurangi Sampah Plastik"
+                android:textColor="#1F5D42"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtChallengeDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Kurangi penggunaan plastik selama 7 hari"
+                android:textColor="#66756C"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtChallengeTarget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Target: 7 Hari"
+                android:textColor="#4F9D69"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="Lihat detail"
+            android:src="@drawable/left"
+            android:rotation="180" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
