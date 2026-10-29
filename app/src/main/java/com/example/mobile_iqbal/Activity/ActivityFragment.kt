@@ -1,6 +1,7 @@
 
 package com.example.mobile_iqbal.Activity
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.example.mobile_iqbal.Adapter.ActivityAdapter
 import com.example.mobile_iqbal.Adapter.ActivityModel
 import com.example.mobile_iqbal.BaseActivity
-import com.example.mobile_iqbal.Home.HomeFragment
 import com.example.mobile_iqbal.R
 import com.example.mobile_iqbal.databinding.FragmentActivityBinding
 
@@ -22,130 +22,139 @@ class ActivityFragment : Fragment() {
 
     private lateinit var activityAdapter: ActivityAdapter
 
-
+    // Daftar seluruh aktivitas EcoHabit
     private val semuaAktivitas = listOf(
+
+        // Kategori Sampah
         ActivityModel(
             "Sampah",
-            "Kelola sampah dengan bijak",
+            "Kelola dan pilah sampah sesuai jenisnya",
             "Sampah",
-            R.drawable.recycle
-        ),
-        ActivityModel(
-            "Energi",
-            "Hemat energi untuk masa depan",
-            "Energi",
-            R.drawable.light
-        ),
-        ActivityModel(
-            "Air",
-            "Jaga setiap tetes air",
-            "Air",
-            R.drawable.tumbler
-        ),
-        ActivityModel(
-            "Transportasi",
-            "Pilih transportasi yang ramah lingkungan",
-            "Transportasi",
-            R.drawable.recycle
-        ),
-        ActivityModel(
-            "Kebiasaan Hijau",
-            "Mulai dari kebiasaan kecil",
-            "Kebiasaan Hijau",
-            R.drawable.tnmnlevel
+            "ic_sampah.png"
         ),
         ActivityModel(
             "Daur Ulang",
-            "Manfaatkan kembali barang yang masih bisa dipakai",
+            "Manfaatkan kembali barang bekas agar berguna",
             "Sampah",
-            R.drawable.recycle
+            "ic_daur_ulang.png"
         ),
         ActivityModel(
             "Kurangi Plastik",
-            "Gunakan tas belanja yang dapat dipakai ulang",
+            "Gunakan tas belanja dan wadah pakai ulang",
             "Sampah",
-            R.drawable.recycle
+            "ic_kurangi_plastik.png"
         ),
         ActivityModel(
             "Kompos Organik",
             "Olah sisa makanan menjadi pupuk alami",
             "Sampah",
-            R.drawable.recycle
+            "ic_kompos.png"
+        ),
+
+        // Kategori Energi
+        ActivityModel(
+            "Energi",
+            "Hemat energi dalam kegiatan sehari-hari",
+            "Energi",
+            "ic_energi.png"
         ),
         ActivityModel(
             "Matikan Perangkat",
             "Matikan perangkat elektronik setelah digunakan",
             "Energi",
-            R.drawable.light
+            "ic_matikan_perangkat.png"
         ),
         ActivityModel(
             "Gunakan Cahaya Alami",
             "Manfaatkan sinar matahari pada siang hari",
             "Energi",
-            R.drawable.light
+            "ic_cahaya_alami.png"
         ),
         ActivityModel(
             "Cabut Charger",
-            "Cabut pengisi daya saat tidak digunakan",
+            "Lepaskan charger saat tidak digunakan",
             "Energi",
-            R.drawable.light
+            "ic_cabut_charger.png"
+        ),
+
+        // Kategori Air
+        ActivityModel(
+            "Air",
+            "Gunakan air secara bijak dan bertanggung jawab",
+            "Air",
+            "ic_air.png"
         ),
         ActivityModel(
             "Tutup Keran",
-            "Pastikan keran tertutup setelah digunakan",
+            "Tutup keran ketika air tidak diperlukan",
             "Air",
-            R.drawable.tumbler
+            "ic_tutup_keran.png"
         ),
         ActivityModel(
             "Gunakan Air Secukupnya",
             "Hindari penggunaan air secara berlebihan",
             "Air",
-            R.drawable.tumbler
+            "ic_hemat_air.png"
         ),
         ActivityModel(
             "Tampung Air Hujan",
             "Manfaatkan air hujan untuk menyiram tanaman",
             "Air",
-            R.drawable.tumbler
+            "ic_air_hujan.png"
+        ),
+
+        // Kategori Transportasi
+        ActivityModel(
+            "Transportasi",
+            "Pilih moda transportasi yang lebih ramah lingkungan",
+            "Transportasi",
+            "ic_transportasi.png"
         ),
         ActivityModel(
             "Berjalan Kaki",
-            "Pilih berjalan kaki untuk perjalanan dekat",
+            "Berjalan kaki untuk perjalanan jarak dekat",
             "Transportasi",
-            R.drawable.recycle
+            "ic_jalan_kaki.png"
         ),
         ActivityModel(
             "Bersepeda",
             "Gunakan sepeda untuk perjalanan singkat",
             "Transportasi",
-            R.drawable.recycle
+            "ic_sepeda.png"
+        ),
+
+        // Kategori Kebiasaan Hijau
+        ActivityModel(
+            "Kebiasaan Hijau",
+            "Mulai perubahan dari kebiasaan kecil",
+            "Kebiasaan Hijau",
+            "ic_kebiasaan_hijau.png"
         ),
         ActivityModel(
             "Menanam Tanaman",
-            "Tambahkan tanaman hijau di sekitar rumah",
+            "Tanam dan rawat tanaman di sekitar rumah",
             "Kebiasaan Hijau",
-            R.drawable.tnmnlevel
+            "ic_tanaman.png"
         ),
         ActivityModel(
             "Bawa Tumbler",
-            "Kurangi botol minum plastik sekali pakai",
+            "Kurangi penggunaan botol minum sekali pakai",
             "Kebiasaan Hijau",
-            R.drawable.tumbler
+            "ic_tumbler.png"
         ),
         ActivityModel(
             "Gunakan Barang Pakai Ulang",
-            "Pilih barang yang dapat digunakan berkali-kali",
+            "Pilih barang yang bisa digunakan berkali-kali",
             "Kebiasaan Hijau",
-            R.drawable.recycle
+            "ic_barang_pakai_ulang.png"
         ),
         ActivityModel(
             "Bersihkan Lingkungan",
             "Jaga kebersihan rumah dan lingkungan sekitar",
             "Kebiasaan Hijau",
-            R.drawable.tnmnlevel
+            "ic_bersihkan_lingkungan.png"
         )
     )
-
 
     private var kategoriAktif = "Semua"
 
@@ -159,10 +168,14 @@ class ActivityFragment : Fragment() {
             container,
             false
         )
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         activityAdapter = ActivityAdapter(
@@ -189,7 +202,7 @@ class ActivityFragment : Fragment() {
             tampilkanKategori("Air")
         }
 
-        // Aksi saat item daftar ditekan
+        // Aksi saat item aktivitas ditekan
         binding.listViewActivity.setOnItemClickListener {
                 _, _, position, _ ->
 
@@ -198,18 +211,18 @@ class ActivityFragment : Fragment() {
             if (aktivitas != null) {
                 Toast.makeText(
                     requireContext(),
-                    aktivitas.nama + ": " + aktivitas.deskripsi,
+                    "${aktivitas.nama}: ${aktivitas.deskripsi}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }
 
-
+        // Tombol kembali ke Home
         binding.toolbarActivity.setNavigationOnClickListener {
             (activity as? BaseActivity)?.bukaHome()
         }
 
-
+        aturTampilanFilter()
     }
 
     private fun tampilkanKategori(kategori: String) {
@@ -240,17 +253,16 @@ class ActivityFragment : Fragment() {
         aturTombol(binding.btnAir, kategoriAktif == "Air")
     }
 
-    private fun aturTombol(tombol: TextView, aktif: Boolean) {
+    private fun aturTombol(
+        tombol: TextView,
+        aktif: Boolean
+    ) {
         if (aktif) {
             tombol.setBackgroundResource(R.drawable.bg_filter_selected)
-            tombol.setTextColor(
-                android.graphics.Color.WHITE
-            )
+            tombol.setTextColor(Color.WHITE)
         } else {
             tombol.setBackgroundResource(R.drawable.bg_filter)
-            tombol.setTextColor(
-                android.graphics.Color.parseColor("#1F5D42")
-            )
+            tombol.setTextColor(Color.parseColor("#1F5D42"))
         }
     }
 

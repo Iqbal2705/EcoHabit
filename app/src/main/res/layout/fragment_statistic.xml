@@ -1,21 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF9ED">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Statistik EcoHabit"
-        android:textColor="#1F5D42"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_margin="20dp"
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarStatistic"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="#DDEEDC"
+        app:navigationIcon="@drawable/left"
+        app:title=""
+        app:menu="@menu/main_menu"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Konten Statistik -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="false"
+        android:clipToPadding="false"
+        android:background="#FFF9ED"
+        app:layout_constraintTop_toBottomOf="@id/toolbarStatistic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
+
+            <!-- Judul -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Statistik"
+                android:textColor="#1F5D42"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lihat Perkembangan Kebiasaanmu"
+                android:textColor="#66756C"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins" />
+
+            <!-- Filter Periode -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnMingguan"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_filter_selected"
+                    android:gravity="center"
+                    android:text="Mingguan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins" />
+
+                <TextView
+                    android:id="@+id/btnBulanan"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_filter"
+                    android:gravity="center"
+                    android:text="Bulanan"
+                    android:textColor="#1F5D42"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins" />
+
+                <TextView
+                    android:id="@+id/btnTahunan"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_filter"
+                    android:gravity="center"
+                    android:text="Tahunan"
+                    android:textColor="#1F5D42"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins" />
+
+            </LinearLayout>
+
+            <!-- Ringkasan Statistik -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_stat_card"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:gravity="center"
+                        android:text="🌿"
+                        android:textSize="23sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtTotalPoin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="300"
+                            android:textColor="#1F5D42"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Point"
+                            android:textColor="#66756C"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_stat_card"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#4F9D69"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtTotalAktivitas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100"
+                            android:textColor="#1F5D42"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aktivitas"
+                            android:textColor="#66756C"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Grafik Aktivitas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_stat_card"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aktivitas Mingguan"
+                    android:textColor="#1F5D42"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins" />
+
+                <com.example.mobile_iqbal.Statistic.StatistikChartView
+                    android:id="@+id/chartAktivitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+
+            <!-- Kategori Terbanyak -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_stat_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori Terbanyak"
+                    android:textColor="#1F5D42"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins" />
+
+                <!-- Sampah -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/recycle"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Sampah" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sampah"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <ProgressBar
+                            android:id="@+id/progressSampah"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="7dp"
+                            android:layout_marginTop="5dp"
+                            android:max="100"
+                            android:progress="92"
+                            android:progressTint="#1F5D42"
+                            android:progressBackgroundTint="#D9D9D9" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Energi -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/light"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Energi" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Energi"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <ProgressBar
+                            android:id="@+id/progressEnergi"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="7dp"
+                            android:layout_marginTop="5dp"
+                            android:max="100"
+                            android:progress="85"
+                            android:progressTint="#1F5D42"
+                            android:progressBackgroundTint="#D9D9D9" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Air -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/tumbler"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Air" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Air"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <ProgressBar
+                            android:id="@+id/progressAir"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="7dp"
+                            android:layout_marginTop="5dp"
+                            android:max="100"
+                            android:progress="78"
+                            android:progressTint="#1F5D42"
+                            android:progressBackgroundTint="#D9D9D9" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

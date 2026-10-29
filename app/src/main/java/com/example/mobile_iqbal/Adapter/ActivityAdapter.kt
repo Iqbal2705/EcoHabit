@@ -1,7 +1,7 @@
-
 package com.example.mobile_iqbal.Adapter
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,9 +30,35 @@ class ActivityAdapter(
 
         val data = activityList[position]
 
-        imgIcon.setImageResource(data.gambar)
         txtName.text = data.nama
         txtDescription.text = data.deskripsi
+
+
+        try {
+            val path = "drawable-activity/${data.gambar}"
+
+            context.assets.open(path).use { stream ->
+                val bitmap = android.graphics.BitmapFactory.decodeStream(stream)
+
+                if (bitmap != null) {
+                    imgIcon.setImageBitmap(bitmap)
+                } else {
+                    android.util.Log.e(
+                        "ActivityAdapter",
+                        "Gambar gagal dibaca: $path"
+                    )
+                    imgIcon.setImageResource(R.drawable.recycle)
+                }
+            }
+        } catch (e: Exception) {
+            android.util.Log.e(
+                "ActivityAdapter",
+                "Gagal memuat gambar: ${data.gambar}",
+                e
+            )
+            imgIcon.setImageResource(R.drawable.recycle)
+        }
+
 
         return view
     }
