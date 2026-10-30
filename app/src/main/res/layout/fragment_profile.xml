@@ -1,21 +1,439 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9ED">
+    android:background="@drawable/bgutama">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profil Pengguna"
-        android:textColor="#1F5D42"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_margin="20dp"
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarProfile"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="#DDEEDC"
+        app:navigationIcon="@drawable/left"
+        app:title=""
+        app:menu="@menu/main_menu"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Konten Profile -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:fillViewport="false"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/toolbarProfile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="24dp">
+
+            <!-- Judul -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="#1F5D42"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kelola akun dan lihat pencapaianmu"
+                android:textColor="#66756C"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins" />
+
+            <!-- Kartu Profil Pengguna -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_stat_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/profile_avatar"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Foto profil pengguna" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtProfileName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Iqbal Alfayyadh"
+                        android:textColor="#1F5D42"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:id="@+id/txtProfileEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="iqbal@gmail.com"
+                        android:textColor="#66756C"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_challenge_tip"
+                        android:paddingStart="9dp"
+                        android:paddingEnd="9dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="🌿  Member EcoHabit"
+                        android:textColor="#1F5D42"
+                        android:textSize="9sp"
+                        android:fontFamily="@font/poppins" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Ringkasan Statistik -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <!-- Total Point -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_stat_card"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:gravity="center"
+                        android:text="🌿"
+                        android:textSize="22sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="5dp">
+
+                        <TextView
+                            android:id="@+id/txtProfilePoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="300"
+                            android:textColor="#1F5D42"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Point"
+                            android:textColor="#66756C"
+                            android:textSize="9sp"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Total Aktivitas -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_stat_card"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#4F9D69"
+                        android:textSize="27sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="5dp">
+
+                        <TextView
+                            android:id="@+id/txtProfileAktivitas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100"
+                            android:textColor="#1F5D42"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aktivitas"
+                            android:textColor="#66756C"
+                            android:textSize="9sp"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Level Pengguna -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_stat_card"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/txtProfileLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Level 2"
+                    android:textColor="#1F5D42"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Menuju Level 3"
+                    android:textColor="#66756C"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/poppins" />
+
+                <ProgressBar
+                    android:id="@+id/progressProfileLevel"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="85"
+                    android:progressTint="#1F5D42"
+                    android:progressBackgroundTint="#D9D9D9" />
+
+            </LinearLayout>
+
+            <!-- Menu Profile -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_stat_card"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <!-- Informasi Akun -->
+                <LinearLayout
+                    android:id="@+id/rowInformasiAkun"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="wrap_content"
+                        android:text="●"
+                        android:textColor="#4F9D69"
+                        android:textSize="22sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:text="Informasi Akun"
+                        android:textColor="#1F5D42"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#4F9D69"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#BDBDBD" />
+
+                <!-- Statistik Saya -->
+                <LinearLayout
+                    android:id="@+id/rowStatistikSaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="wrap_content"
+                        android:text="⌁"
+                        android:textColor="#4F9D69"
+                        android:textSize="26sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:text="Statistik Saya"
+                        android:textColor="#1F5D42"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#4F9D69"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#BDBDBD" />
+
+                <!-- Pencapaian -->
+                <LinearLayout
+                    android:id="@+id/rowPencapaian"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="wrap_content"
+                        android:text="✿"
+                        android:textColor="#4F9D69"
+                        android:textSize="24sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:text="Pencapaian"
+                        android:textColor="#1F5D42"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#4F9D69"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#BDBDBD" />
+
+                <!-- Keluar -->
+                <LinearLayout
+                    android:id="@+id/rowKeluar"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="wrap_content"
+                        android:text="⇥"
+                        android:textColor="#FF0000"
+                        android:textSize="25sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:text="Keluar"
+                        android:textColor="#FF0000"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

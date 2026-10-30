@@ -1,14 +1,12 @@
-
 package com.example.mobile_iqbal.Challenge
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.mobile_iqbal.Adapter.ChallengeAdapter
-import com.example.mobile_iqbal.Adapter.ChallengeModel
-import com.example.mobile_iqbal.R
+import com.example.mobile_iqbal.BaseActivity
 import com.example.mobile_iqbal.databinding.FragmentChallengeBinding
 
 class ChallengeFragment : Fragment() {
@@ -16,32 +14,8 @@ class ChallengeFragment : Fragment() {
     private var _binding: FragmentChallengeBinding? = null
     private val binding get() = _binding!!
 
-    private val challengeList = listOf(
-        ChallengeModel(
-            "Kurangi Sampah Plastik",
-            "Kurangi penggunaan plastik sekali pakai.",
-            "7 Hari",
-            R.drawable.tnmnchallange
-        ),
-        ChallengeModel(
-            "Bawa Tumbler",
-            "Gunakan botol minum sendiri saat bepergian.",
-            "3 Hari",
-            R.drawable.tumbler
-        ),
-        ChallengeModel(
-            "Hemat Energi",
-            "Matikan lampu dan alat elektronik saat tidak digunakan.",
-            "5 Hari",
-            R.drawable.light
-        ),
-        ChallengeModel(
-            "Pilah Sampah",
-            "Pisahkan sampah sesuai jenisnya.",
-            "7 Hari",
-            R.drawable.recycle
-        )
-    )
+    private var jumlahHari = 3
+    private var sudahSelesaiHariIni = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,15 +30,57 @@ class ChallengeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ChallengeAdapter(
-            requireContext(),
-            challengeList
-        )
+        binding.toolbarChallenge.setNavigationOnClickListener {
+            (activity as? BaseActivity)?.bukaHome()
+        }
 
-        binding.listViewChallenge.adapter = adapter
+        tampilkanProgress()
+
+        binding.btnSelesaikanChallenge.setOnClickListener {
+            if (!sudahSelesaiHariIni) {
+
+                if (jumlahHari < 7) {
+                    jumlahHari++
+                }
+
+                sudahSelesaiHariIni = true
+                tampilkanProgress()
+
+                Toast.makeText(
+                    requireContext(),
+                    "Challenge berhasil diselesaikan!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Challenge hari ini sudah selesai.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private fun tampilkanProgress() {
+        binding.progressChallenge.progress = jumlahHari
+
+        binding.txtTargetChallenge.text =
+            "$jumlahHari dari 7 Hari"
+
+        if (sudahSelesaiHariIni) {
+            binding.btnSelesaikanChallenge.text =
+                "✓  Sudah Diselesaikan"
+
+            binding.btnSelesaikanChallenge.isEnabled = false
+            binding.btnSelesaikanChallenge.alpha = 0.7f
+        }
     }
 
     override fun onDestroyView() {
