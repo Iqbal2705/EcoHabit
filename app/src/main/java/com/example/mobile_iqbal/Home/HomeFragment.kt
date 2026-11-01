@@ -3,7 +3,10 @@ package com.example.mobile_iqbal.Home
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,16 +23,37 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    // Memuat gambar dari assets/drawable-main
+    private fun loadMainAsset(fileName: String): Bitmap? {
+        return try {
+            requireContext().assets
+                .open("drawable-main/$fileName")
+                .use { inputStream ->
+                    BitmapFactory.decodeStream(inputStream)
+                }
+        } catch (e: Exception) {
+            Log.e("HomeFragment", "Gagal memuat gambar: $fileName", e)
+            null
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(
+            inflater,
+            container,
+            false
+        )
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         val sharedPref = requireContext().getSharedPreferences(
@@ -39,6 +63,28 @@ class HomeFragment : Fragment() {
 
         val username = sharedPref.getString("username", "Iqbal")
         binding.txtGreeting.text = "Halo, $username! 🌿"
+
+        // Memuat ikon aktivitas dari assets/drawable-main
+        binding.imgTumbler.setImageBitmap(
+            loadMainAsset("tumbler.png")
+        )
+
+        binding.imgLampu.setImageBitmap(
+            loadMainAsset("light.png")
+        )
+
+        binding.imgRecycle.setImageBitmap(
+            loadMainAsset("recycle.png")
+        )
+
+        // Memuat ikon checklist dari assets/drawable-main
+        val gambarSelesai = loadMainAsset("checkbox.png")
+        val gambarBelumSelesai = loadMainAsset("unchecked.png")
+
+        // Tampilan awal checklist
+        binding.checkTumbler.setImageBitmap(gambarBelumSelesai)
+        binding.checkLampu.setImageBitmap(gambarBelumSelesai)
+        binding.checkSampah.setImageBitmap(gambarBelumSelesai)
 
         // Menu notifikasi dan logout
         binding.toolbarMain.setOnMenuItemClickListener { item ->
@@ -65,9 +111,9 @@ class HomeFragment : Fragment() {
         binding.checkTumbler.setOnClickListener {
             val selesai = it.tag != true
             it.tag = selesai
-            binding.checkTumbler.setImageResource(
-                if (selesai) R.drawable.checkbox
-                else R.drawable.unchecked
+
+            binding.checkTumbler.setImageBitmap(
+                if (selesai) gambarSelesai else gambarBelumSelesai
             )
         }
 
@@ -75,9 +121,9 @@ class HomeFragment : Fragment() {
         binding.checkLampu.setOnClickListener {
             val selesai = it.tag != true
             it.tag = selesai
-            binding.checkLampu.setImageResource(
-                if (selesai) R.drawable.checkbox
-                else R.drawable.unchecked
+
+            binding.checkLampu.setImageBitmap(
+                if (selesai) gambarSelesai else gambarBelumSelesai
             )
         }
 
@@ -85,20 +131,24 @@ class HomeFragment : Fragment() {
         binding.checkSampah.setOnClickListener {
             val selesai = it.tag != true
             it.tag = selesai
-            binding.checkSampah.setImageResource(
-                if (selesai) R.drawable.checkbox
-                else R.drawable.unchecked
+
+            binding.checkSampah.setImageBitmap(
+                if (selesai) gambarSelesai else gambarBelumSelesai
             )
         }
 
-        // Buka detail challenge
+        // Membuka DetailActivity dari kartu Challenge
         binding.cardChallenge.setOnClickListener {
             startActivity(
-                Intent(requireContext(), DetailActivity::class.java)
+                Intent(
+                    requireContext(),
+                    DetailActivity::class.java
+                )
             )
         }
     }
 
+    // Dialog Logout
     private fun tampilkanDialogLogout() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Logout")

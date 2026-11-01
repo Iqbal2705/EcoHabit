@@ -1,6 +1,9 @@
+
 package com.example.mobile_iqbal
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -8,25 +11,40 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.mobile_iqbal.databinding.ActivityLogin3Binding
 import com.example.mobile_iqbal.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+
+    // Memuat gambar dari assets/drawable-main
+    private fun loadMainAsset(fileName: String): Bitmap? {
+        return try {
+            assets.open("drawable-main/$fileName").use { inputStream ->
+                BitmapFactory.decodeStream(inputStream)
+            }
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Gagal memuat gambar: $fileName", e)
+            null
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         // Mengecek status login
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val sharedPref = getSharedPreferences(
+            "user_pref",
+            MODE_PRIVATE
+        )
+
         val isLogin = sharedPref.getBoolean("isLogin", false)
 
         // Jika belum login, kembali ke LoginActivity
         if (!isLogin) {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
             return
         }
@@ -34,16 +52,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // Mengatur system bar
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main)
+        ) { v, insets ->
+
             val systemBars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars()
             )
+
             v.setPadding(
                 systemBars.left,
                 systemBars.top,
                 systemBars.right,
                 systemBars.bottom
             )
+
             insets
         }
 
@@ -66,6 +90,7 @@ class MainActivity : AppCompatActivity() {
         // Menu Toolbar
         binding.toolbarMain.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+
                 R.id.action_notification -> {
                     Toast.makeText(
                         this,
@@ -84,46 +109,53 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Checklist aktivitas tumbler
+        // Memuat ikon checklist dari assets
+        val gambarSelesai = loadMainAsset("checkbox.png")
+        val gambarBelumSelesai = loadMainAsset("unchecked.png")
+
+        // Tampilan awal checklist
+        binding.checkTumbler.setImageBitmap(gambarBelumSelesai)
+        binding.checkLampu.setImageBitmap(gambarBelumSelesai)
+        binding.checkSampah.setImageBitmap(gambarBelumSelesai)
+
+        // Checklist tumbler
         binding.checkTumbler.setOnClickListener {
             val selesai = it.tag != true
             it.tag = selesai
 
-            binding.checkTumbler.setImageResource(
-                if (selesai) R.drawable.checkbox
-                else R.drawable.unchecked
+            binding.checkTumbler.setImageBitmap(
+                if (selesai) gambarSelesai else gambarBelumSelesai
             )
         }
 
-        // Checklist aktivitas lampu
+        // Checklist lampu
         binding.checkLampu.setOnClickListener {
             val selesai = it.tag != true
             it.tag = selesai
 
-            binding.checkLampu.setImageResource(
-                if (selesai) R.drawable.checkbox
-                else R.drawable.unchecked
+            binding.checkLampu.setImageBitmap(
+                if (selesai) gambarSelesai else gambarBelumSelesai
             )
         }
 
-        // Checklist aktivitas pilah sampah
+        // Checklist pilah sampah
         binding.checkSampah.setOnClickListener {
             val selesai = it.tag != true
             it.tag = selesai
 
-            binding.checkSampah.setImageResource(
-                if (selesai) R.drawable.checkbox
-                else R.drawable.unchecked
+            binding.checkSampah.setImageBitmap(
+                if (selesai) gambarSelesai else gambarBelumSelesai
             )
         }
 
         // Membuka DetailActivity dari kartu Challenge
         binding.cardChallenge.setOnClickListener {
-            val intent = Intent(
-                this@MainActivity,
-                DetailActivity::class.java
+            startActivity(
+                Intent(
+                    this@MainActivity,
+                    DetailActivity::class.java
+                )
             )
-            startActivity(intent)
         }
     }
 
@@ -132,26 +164,18 @@ class MainActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Logout")
             .setMessage("Apakah kamu yakin ingin keluar?")
-
-            // Tombol Tidak
             .setNegativeButton("Tidak") { dialog, _ ->
                 dialog.dismiss()
             }
-
-            // Tombol Ya
             .setPositiveButton("Ya") { _, _ ->
 
-                // Menghapus status login dan username
                 val sharedPref = getSharedPreferences(
                     "user_pref",
                     MODE_PRIVATE
                 )
 
-                sharedPref.edit()
-                    .clear()
-                    .apply()
+                sharedPref.edit().clear().apply()
 
-                // Kembali ke LoginActivity
                 val intent = Intent(
                     this@MainActivity,
                     LoginActivity::class.java

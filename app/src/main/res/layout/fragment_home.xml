@@ -7,19 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgutama"
-    tools:context=".Home.HomeFragment">
+    tools:context=".MainActivity">
 
+    <!-- TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarMain"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:background="#DDEEDC"
+        app:navigationIcon="@drawable/left"
         app:title=""
         app:menu="@menu/main_menu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- KONTEN BERANDA -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -36,9 +39,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:paddingTop="8dp">
 
+            <!-- SAPAAN -->
             <TextView
                 android:id="@+id/txtGreeting"
                 android:layout_width="match_parent"
@@ -52,12 +57,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
                 android:layout_marginTop="3dp"
-                android:text="Terus jaga kebiasaan baikmu\ndemi bumi yang lebih hijau"
+                android:text="Terus jaga kebiasaan baikmu&#10;demi bumi yang lebih hijau"
                 android:textColor="#66756C"
-                android:textSize="12sp"
-                android:fontFamily="@font/poppins" />
+                android:textSize="12sp" />
 
+            <!-- KARTU LEVEL -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="112dp"
@@ -91,20 +97,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Level 3"
                             android:textColor="#1F5D42"
                             android:textSize="17sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/poppins" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="2dp"
                             android:text="Pecinta Lingkungan"
                             android:textColor="#4F9D69"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins" />
+                            android:textSize="12sp" />
 
                         <ProgressBar
                             style="?android:attr/progressBarStyleHorizontal"
@@ -119,17 +125,18 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:gravity="end"
                             android:layout_marginTop="3dp"
                             android:text="200 / 250 XP"
                             android:textColor="#4F9D69"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/poppins" />
+                            android:textSize="10sp" />
 
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- JUDUL AKTIVITAS -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,7 +147,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins" />
 
-            <!-- Aktivitas tumbler -->
+            <!-- AKTIVITAS TUMBLER -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -159,11 +166,11 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
+                        android:id="@+id/imgTumbler"
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:contentDescription="Ikon tumbler"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/tumbler" />
+                        android:scaleType="fitCenter" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -175,33 +182,33 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Bawa Tumbler Sendiri"
                             android:textColor="#173B2B"
                             android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/poppins" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="3dp"
                             android:text="+ 10 Point"
                             android:textColor="#4F9D69"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/poppins" />
+                            android:textSize="11sp" />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/checkTumbler"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/unchecked"
                         android:scaleType="fitCenter"
                         android:contentDescription="Status aktivitas tumbler" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Aktivitas lampu -->
+            <!-- AKTIVITAS LAMPU -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -220,11 +227,11 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
+                        android:id="@+id/imgLampu"
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:contentDescription="Ikon lampu"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/light" />
+                        android:scaleType="fitCenter" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -236,33 +243,33 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Matikan Lampu"
                             android:textColor="#173B2B"
                             android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/poppins" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="3dp"
                             android:text="+ 10 Point"
                             android:textColor="#4F9D69"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/poppins" />
+                            android:textSize="11sp" />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/checkLampu"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/unchecked"
                         android:scaleType="fitCenter"
                         android:contentDescription="Status aktivitas lampu" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Aktivitas pilah sampah -->
+            <!-- AKTIVITAS PILAH SAMPAH -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -281,11 +288,11 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
+                        android:id="@+id/imgRecycle"
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:contentDescription="Ikon daur ulang"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/recycle" />
+                        android:scaleType="fitCenter" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -297,33 +304,33 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Pilah Sampah"
                             android:textColor="#173B2B"
                             android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/poppins" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="3dp"
                             android:text="+ 10 Point"
                             android:textColor="#4F9D69"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/poppins" />
+                            android:textSize="11sp" />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/checkSampah"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/unchecked"
                         android:scaleType="fitCenter"
                         android:contentDescription="Status aktivitas pilah sampah" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Kartu challenge -->
+            <!-- KARTU CHALLENGE -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardChallenge"
                 android:layout_width="match_parent"
@@ -350,30 +357,30 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Yuk, Ikuti Challenge!"
                             android:textColor="#1F5D42"
                             android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/poppins" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="5dp"
                             android:text="Kurangi Sampah"
                             android:textColor="#1F5D42"
                             android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/poppins" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins"
                             android:text="Selama 7 Hari     ›"
                             android:textColor="#4F9D69"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <ImageView
