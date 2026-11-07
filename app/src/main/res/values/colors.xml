@@ -6,4 +6,11 @@
     <color name="eco_nav_active">#4F9D69</color>
     <color name="eco_nav_inactive">#66756C</color>
 
+    <color name="tutorial_bg">#FFF9ED</color>
+    <color name="tutorial_green">#DDEEDC</color>
+    <color name="tutorial_dark">#1F5D42</color>
+    <color name="tutorial_primary">#4F9D69</color>
+    <color name="tutorial_text">#66756C</color>
+    <color name="tutorial_dot">#B9DDB5</color>
+
 </resources>

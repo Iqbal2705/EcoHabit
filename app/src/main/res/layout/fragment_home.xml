@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,32 +8,32 @@
     android:background="@drawable/bgutama"
     tools:context=".MainActivity">
 
-    <!-- TOOLBAR -->
+    <!-- ========== TOOLBAR ========== -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarMain"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:background="#DDEEDC"
-        app:navigationIcon="@drawable/left"
-        app:title=""
-        app:menu="@menu/main_menu"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/main_menu"
+        app:navigationIcon="@drawable/left"
+        app:title="" />
 
-    <!-- KONTEN BERANDA -->
+    <!-- ========== KONTEN BERANDA ========== -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="false"
         android:clipToPadding="false"
+        android:fillViewport="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="20dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbarMain"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbarMain">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,27 +42,27 @@
             android:orientation="vertical"
             android:paddingTop="8dp">
 
-            <!-- SAPAAN -->
+            <!-- ===== SAPAAN ===== -->
             <TextView
                 android:id="@+id/txtGreeting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
                 android:text="Halo, Iqbal! 🌿"
                 android:textColor="#1F5D42"
                 android:textSize="21sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
                 android:layout_marginTop="3dp"
+                android:fontFamily="@font/poppins"
                 android:text="Terus jaga kebiasaan baikmu&#10;demi bumi yang lebih hijau"
                 android:textColor="#66756C"
                 android:textSize="12sp" />
 
-            <!-- KARTU LEVEL -->
+            <!-- ===== KARTU LEVEL ===== -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="112dp"
@@ -90,8 +89,8 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginStart="12dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -106,8 +105,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="2dp"
+                            android:fontFamily="@font/poppins"
                             android:text="Pecinta Lingkungan"
                             android:textColor="#4F9D69"
                             android:textSize="12sp" />
@@ -119,15 +118,15 @@
                             android:layout_marginTop="10dp"
                             android:max="250"
                             android:progress="200"
-                            android:progressTint="#4F9D69"
-                            android:progressBackgroundTint="#B9D8B8" />
+                            android:progressBackgroundTint="#B9D8B8"
+                            android:progressTint="#4F9D69" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
                             android:fontFamily="@font/poppins"
                             android:gravity="end"
-                            android:layout_marginTop="3dp"
                             android:text="200 / 250 XP"
                             android:textColor="#4F9D69"
                             android:textSize="10sp" />
@@ -136,18 +135,304 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- JUDUL AKTIVITAS -->
+            <!-- ===== KATEGORI AKTIVITAS ===== -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/poppins"
+                android:text="Jelajahi Kategori"
+                android:textColor="#1F5D42"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/poppins"
+                android:text="Pilih kebiasaan baik untuk bumi"
+                android:textColor="#66756C"
+                android:textSize="11sp" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:alignmentMode="alignMargins"
+                app:columnCount="2"
+                app:columnOrderPreserved="true"
+                app:rowCount="3">
+
+                <!-- SAMPAH -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#E4F1E5"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="13dp">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="#C8E4CC"
+                            android:gravity="center"
+                            android:text="♻"
+                            android:textColor="#1F5D42"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Sampah"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Kelola dan pilah sampah"
+                            android:textColor="#66756C"
+                            android:textSize="9sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ENERGI -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#FFF0D9"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="13dp">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="#F9DFB4"
+                            android:gravity="center"
+                            android:text="☀"
+                            android:textColor="#9A681C"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Energi"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Hemat energi sehari-hari"
+                            android:textColor="#66756C"
+                            android:textSize="9sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- AIR -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#E2F1F8"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="13dp">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="#C5E4F1"
+                            android:gravity="center"
+                            android:text="♧"
+                            android:textColor="#28789B"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Air"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Gunakan air dengan bijak"
+                            android:textColor="#66756C"
+                            android:textSize="9sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- TRANSPORTASI -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#F0EAF8"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnWeight="1"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="13dp">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="#DFD1F0"
+                            android:gravity="center"
+                            android:text="🚲"
+                            android:textSize="23sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Transportasi"
+                            android:textColor="#1F5D42"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Pilih perjalanan ramah lingkungan"
+                            android:textColor="#66756C"
+                            android:textSize="9sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- KEBIASAAN HIJAU -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#E8F0DC"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:layout_columnSpan="2"
+                    app:layout_columnWeight="1"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <TextView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="#D1E5BB"
+                            android:gravity="center"
+                            android:text="🌱"
+                            android:textSize="25sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Kebiasaan Hijau"
+                                android:textColor="#1F5D42"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Mulai perubahan dari hal kecil"
+                                android:textColor="#66756C"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#1F5D42"
+                            android:textSize="27sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- ===== AKTIVITAS HARI INI ===== -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
+                android:fontFamily="@font/poppins"
                 android:text="Aktivitas Hari Ini"
                 android:textColor="#1F5D42"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins" />
+                android:textStyle="bold" />
 
-            <!-- AKTIVITAS TUMBLER -->
+            <!-- Aktivitas: Tumbler -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -191,24 +476,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="3dp"
+                            android:fontFamily="@font/poppins"
                             android:text="+ 10 Point"
                             android:textColor="#4F9D69"
                             android:textSize="11sp" />
+
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/checkTumbler"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:scaleType="fitCenter"
-                        android:contentDescription="Status aktivitas tumbler" />
+                        android:contentDescription="Status aktivitas tumbler"
+                        android:scaleType="fitCenter" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- AKTIVITAS LAMPU -->
+            <!-- Aktivitas: Lampu -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -252,24 +538,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="3dp"
+                            android:fontFamily="@font/poppins"
                             android:text="+ 10 Point"
                             android:textColor="#4F9D69"
                             android:textSize="11sp" />
+
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/checkLampu"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:scaleType="fitCenter"
-                        android:contentDescription="Status aktivitas lampu" />
+                        android:contentDescription="Status aktivitas lampu"
+                        android:scaleType="fitCenter" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- AKTIVITAS PILAH SAMPAH -->
+            <!-- Aktivitas: Pilah Sampah -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -313,24 +600,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="3dp"
+                            android:fontFamily="@font/poppins"
                             android:text="+ 10 Point"
                             android:textColor="#4F9D69"
                             android:textSize="11sp" />
+
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/checkSampah"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:scaleType="fitCenter"
-                        android:contentDescription="Status aktivitas pilah sampah" />
+                        android:contentDescription="Status aktivitas pilah sampah"
+                        android:scaleType="fitCenter" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- KARTU CHALLENGE -->
+            <!-- ===== KARTU CHALLENGE ===== -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardChallenge"
                 android:layout_width="match_parent"
@@ -366,8 +654,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
                             android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppins"
                             android:text="Kurangi Sampah"
                             android:textColor="#1F5D42"
                             android:textSize="14sp"
@@ -381,6 +669,7 @@
                             android:text="Selama 7 Hari     ›"
                             android:textColor="#4F9D69"
                             android:textSize="12sp" />
+
                     </LinearLayout>
 
                     <ImageView
@@ -389,6 +678,7 @@
                         android:contentDescription="Tanaman Challenge"
                         android:scaleType="fitCenter"
                         android:src="@drawable/tnmnchallange" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

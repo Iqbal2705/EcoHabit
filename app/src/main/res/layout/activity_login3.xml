@@ -9,7 +9,21 @@
     android:background="@android:color/transparent"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/imgHeaderWave"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/bg_header_wave"
+        android:scaleType="fitXY"
+        android:contentDescription="Header Wave"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <ScrollView
+        android:id="@+id/scrollLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -22,7 +36,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="140dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 

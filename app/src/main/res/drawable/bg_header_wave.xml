@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="180dp"
+    android:viewportWidth="360"
+    android:viewportHeight="180">
+
+    <!-- Gelombang utama -->
+    <path
+        android:fillColor="#4F9D69"
+        android:pathData="
+            M0,0
+            H360
+            V105
+            C300,145 250,115 190,135
+            C120,160 65,120 0,150
+            Z" />
+
+    <!-- Gelombang tambahan -->
+    <path
+        android:fillColor="#1F5D42"
+        android:pathData="
+            M0,0
+            H360
+            V80
+            C290,115 235,95 175,115
+            C105,140 55,105 0,125
+            Z" />
+
+</vector>

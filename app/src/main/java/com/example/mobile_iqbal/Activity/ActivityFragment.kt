@@ -1,18 +1,15 @@
 
 package com.example.mobile_iqbal.Activity
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.mobile_iqbal.Adapter.ActivityAdapter
 import com.example.mobile_iqbal.Adapter.ActivityModel
 import com.example.mobile_iqbal.BaseActivity
-import com.example.mobile_iqbal.R
 import com.example.mobile_iqbal.databinding.FragmentActivityBinding
 
 class ActivityFragment : Fragment() {
@@ -185,22 +182,24 @@ class ActivityFragment : Fragment() {
 
         binding.listViewActivity.adapter = activityAdapter
 
-        // Filter kategori
-        binding.btnSemua.setOnClickListener {
-            tampilkanKategori("Semua")
+        // Pilihan kategori menggunakan ChipGroup
+        binding.chipGroupKategori.setOnCheckedChangeListener { _, checkedId ->
+
+            val kategori = when (checkedId) {
+                binding.chipSemua.id -> "Semua"
+                binding.chipSampah.id -> "Sampah"
+                binding.chipEnergi.id -> "Energi"
+                binding.chipAir.id -> "Air"
+                binding.chipTransportasi.id -> "Transportasi"
+                binding.chipKebiasaanHijau.id -> "Kebiasaan Hijau"
+                else -> return@setOnCheckedChangeListener
+            }
+
+            tampilkanKategori(kategori)
         }
 
-        binding.btnSampah.setOnClickListener {
-            tampilkanKategori("Sampah")
-        }
-
-        binding.btnEnergi.setOnClickListener {
-            tampilkanKategori("Energi")
-        }
-
-        binding.btnAir.setOnClickListener {
-            tampilkanKategori("Air")
-        }
+        // Pilih Semua sebagai kategori awal
+        binding.chipSemua.isChecked = true
 
         // Aksi saat item aktivitas ditekan
         binding.listViewActivity.setOnItemClickListener {
@@ -221,8 +220,6 @@ class ActivityFragment : Fragment() {
         binding.toolbarActivity.setNavigationOnClickListener {
             (activity as? BaseActivity)?.bukaHome()
         }
-
-        aturTampilanFilter()
     }
 
     private fun tampilkanKategori(kategori: String) {
@@ -242,28 +239,6 @@ class ActivityFragment : Fragment() {
         )
 
         binding.listViewActivity.adapter = activityAdapter
-
-        aturTampilanFilter()
-    }
-
-    private fun aturTampilanFilter() {
-        aturTombol(binding.btnSemua, kategoriAktif == "Semua")
-        aturTombol(binding.btnSampah, kategoriAktif == "Sampah")
-        aturTombol(binding.btnEnergi, kategoriAktif == "Energi")
-        aturTombol(binding.btnAir, kategoriAktif == "Air")
-    }
-
-    private fun aturTombol(
-        tombol: TextView,
-        aktif: Boolean
-    ) {
-        if (aktif) {
-            tombol.setBackgroundResource(R.drawable.bg_filter_selected)
-            tombol.setTextColor(Color.WHITE)
-        } else {
-            tombol.setBackgroundResource(R.drawable.bg_filter)
-            tombol.setTextColor(Color.parseColor("#1F5D42"))
-        }
     }
 
     override fun onDestroyView() {

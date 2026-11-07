@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.mobile_iqbal.Tutorial.TutorialActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -24,16 +25,11 @@ class SplashScreenActivity : AppCompatActivity() {
         lifecycleScope.launch {
             delay(5000)
 
-            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-            val isLogin = sharedPref.getBoolean("isLogin", false)
+            val intent = Intent(
+                this@SplashScreenActivity,
+                TutorialActivity::class.java
+            )
 
-            val target = if (isLogin) {
-                BaseActivity::class.java
-            } else {
-                LoginActivity::class.java
-            }
-
-            val intent = Intent(this@SplashScreenActivity, target)
             startActivity(intent)
             finish()
         }

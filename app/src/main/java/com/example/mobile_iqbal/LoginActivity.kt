@@ -1,4 +1,3 @@
-
 package com.example.mobile_iqbal
 
 import android.content.Intent
@@ -40,17 +39,21 @@ class LoginActivity : AppCompatActivity() {
         tampilkanAssetsLogin()
 
         // Mengatur system bar
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // Padding hanya dipasang ke ScrollView (konten),
+        // bukan ke root, supaya gelombang menempel sampai tepi atas layar
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
 
             val systemBars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars()
             )
 
-            v.setPadding(
-                systemBars.left,
-                systemBars.top,
-                systemBars.right,
-                systemBars.bottom
+            val d = resources.displayMetrics.density
+
+            binding.scrollLogin?.setPadding(
+                systemBars.left + (24 * d).toInt(),
+                systemBars.top + (12 * d).toInt(),
+                systemBars.right + (24 * d).toInt(),
+                systemBars.bottom + (12 * d).toInt()
             )
 
             insets

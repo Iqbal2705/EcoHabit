@@ -60,71 +60,110 @@
             android:layout_marginTop="16dp"
             android:scrollbars="none">
 
-            <LinearLayout
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupKategori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                app:chipSpacingHorizontal="8dp">
 
-                <TextView
-                    android:id="@+id/btnSemua"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSemua"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_marginEnd="6dp"
-                    android:background="@drawable/bg_filter_selected"
-                    android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:text="Semua"
-                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/poppins"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins" />
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/chip_filter_background"
+                    app:chipStrokeColor="#4F9D69"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="20dp"
+                    android:textColor="@color/chip_filter_text" />
 
-                <TextView
-                    android:id="@+id/btnSampah"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSampah"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_marginEnd="6dp"
-                    android:background="@drawable/bg_filter"
-                    android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:text="Sampah"
-                    android:textColor="#1F5D42"
+                    android:fontFamily="@font/poppins"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins" />
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/chip_filter_background"
+                    app:chipStrokeColor="#4F9D69"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="20dp"
+                    android:textColor="@color/chip_filter_text" />
 
-                <TextView
-                    android:id="@+id/btnEnergi"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEnergi"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_marginEnd="6dp"
-                    android:background="@drawable/bg_filter"
-                    android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:text="Energi"
-                    android:textColor="#1F5D42"
+                    android:fontFamily="@font/poppins"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins" />
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/chip_filter_background"
+                    app:chipStrokeColor="#4F9D69"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="20dp"
+                    android:textColor="@color/chip_filter_text" />
 
-                <TextView
-                    android:id="@+id/btnAir"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAir"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:background="@drawable/bg_filter"
-                    android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
                     android:text="Air"
-                    android:textColor="#1F5D42"
+                    android:fontFamily="@font/poppins"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins" />
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/chip_filter_background"
+                    app:chipStrokeColor="#4F9D69"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="20dp"
+                    android:textColor="@color/chip_filter_text" />
 
-            </LinearLayout>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTransportasi"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Transportasi"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="12sp"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/chip_filter_background"
+                    app:chipStrokeColor="#4F9D69"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="20dp"
+                    android:textColor="@color/chip_filter_text" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipKebiasaanHijau"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Kebiasaan Hijau"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="12sp"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/chip_filter_background"
+                    app:chipStrokeColor="#4F9D69"
+                    app:chipStrokeWidth="1dp"
+                    app:chipCornerRadius="20dp"
+                    android:textColor="@color/chip_filter_text" />
+            </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
     </LinearLayout>
 
