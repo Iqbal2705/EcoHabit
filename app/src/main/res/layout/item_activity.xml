@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="18dp"
     app:cardElevation="3dp"
@@ -13,55 +14,41 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="76dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="12dp">
 
         <ImageView
             android:id="@+id/imgActivityIcon"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:contentDescription="Ikon aktivitas"
             android:scaleType="fitCenter" />
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtActivityName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtActivityName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sampah"
-                android:textColor="#1F5D42"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins" />
-
-            <TextView
-                android:id="@+id/txtActivityDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Kelola sampah dengan bijak"
-                android:textColor="#858585"
-                android:textSize="11sp"
-                android:fontFamily="@font/poppins" />
-
-        </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Sampah"
+            android:textColor="#1F5D42"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/txtActivityDescription"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:text="›"
-            android:textColor="#1F5D42"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="Kelola sampah dengan bijak"
+            android:textColor="#858585"
+            android:textSize="10sp"
+            android:fontFamily="@font/poppins" />
 
     </LinearLayout>
 

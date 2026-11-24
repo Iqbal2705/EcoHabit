@@ -5,161 +5,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.mobile_iqbal.Adapter.ActivityAdapter
-import com.example.mobile_iqbal.Adapter.ActivityModel
 import com.example.mobile_iqbal.BaseActivity
 import com.example.mobile_iqbal.databinding.FragmentActivityBinding
+import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 
 class ActivityFragment : Fragment() {
 
     private var _binding: FragmentActivityBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var activityAdapter: ActivityAdapter
-
-    // Daftar seluruh aktivitas EcoHabit
-    private val semuaAktivitas = listOf(
-
-        // Kategori Sampah
-        ActivityModel(
-            "Sampah",
-            "Kelola dan pilah sampah sesuai jenisnya",
-            "Sampah",
-            "ic_sampah.png"
-        ),
-        ActivityModel(
-            "Daur Ulang",
-            "Manfaatkan kembali barang bekas agar berguna",
-            "Sampah",
-            "ic_daur_ulang.png"
-        ),
-        ActivityModel(
-            "Kurangi Plastik",
-            "Gunakan tas belanja dan wadah pakai ulang",
-            "Sampah",
-            "ic_kurangi_plastik.png"
-        ),
-        ActivityModel(
-            "Kompos Organik",
-            "Olah sisa makanan menjadi pupuk alami",
-            "Sampah",
-            "ic_kompos.png"
-        ),
-
-        // Kategori Energi
-        ActivityModel(
-            "Energi",
-            "Hemat energi dalam kegiatan sehari-hari",
-            "Energi",
-            "ic_energi.png"
-        ),
-        ActivityModel(
-            "Matikan Perangkat",
-            "Matikan perangkat elektronik setelah digunakan",
-            "Energi",
-            "ic_matikan_perangkat.png"
-        ),
-        ActivityModel(
-            "Gunakan Cahaya Alami",
-            "Manfaatkan sinar matahari pada siang hari",
-            "Energi",
-            "ic_cahaya_alami.png"
-        ),
-        ActivityModel(
-            "Cabut Charger",
-            "Lepaskan charger saat tidak digunakan",
-            "Energi",
-            "ic_cabut_charger.png"
-        ),
-
-        // Kategori Air
-        ActivityModel(
-            "Air",
-            "Gunakan air secara bijak dan bertanggung jawab",
-            "Air",
-            "ic_air.png"
-        ),
-        ActivityModel(
-            "Tutup Keran",
-            "Tutup keran ketika air tidak diperlukan",
-            "Air",
-            "ic_tutup_keran.png"
-        ),
-        ActivityModel(
-            "Gunakan Air Secukupnya",
-            "Hindari penggunaan air secara berlebihan",
-            "Air",
-            "ic_hemat_air.png"
-        ),
-        ActivityModel(
-            "Tampung Air Hujan",
-            "Manfaatkan air hujan untuk menyiram tanaman",
-            "Air",
-            "ic_air_hujan.png"
-        ),
-
-        // Kategori Transportasi
-        ActivityModel(
-            "Transportasi",
-            "Pilih moda transportasi yang lebih ramah lingkungan",
-            "Transportasi",
-            "ic_transportasi.png"
-        ),
-        ActivityModel(
-            "Berjalan Kaki",
-            "Berjalan kaki untuk perjalanan jarak dekat",
-            "Transportasi",
-            "ic_jalan_kaki.png"
-        ),
-        ActivityModel(
-            "Bersepeda",
-            "Gunakan sepeda untuk perjalanan singkat",
-            "Transportasi",
-            "ic_sepeda.png"
-        ),
-
-        // Kategori Kebiasaan Hijau
-        ActivityModel(
-            "Kebiasaan Hijau",
-            "Mulai perubahan dari kebiasaan kecil",
-            "Kebiasaan Hijau",
-            "ic_kebiasaan_hijau.png"
-        ),
-        ActivityModel(
-            "Menanam Tanaman",
-            "Tanam dan rawat tanaman di sekitar rumah",
-            "Kebiasaan Hijau",
-            "ic_tanaman.png"
-        ),
-        ActivityModel(
-            "Bawa Tumbler",
-            "Kurangi penggunaan botol minum sekali pakai",
-            "Kebiasaan Hijau",
-            "ic_tumbler.png"
-        ),
-        ActivityModel(
-            "Gunakan Barang Pakai Ulang",
-            "Pilih barang yang bisa digunakan berkali-kali",
-            "Kebiasaan Hijau",
-            "ic_barang_pakai_ulang.png"
-        ),
-        ActivityModel(
-            "Bersihkan Lingkungan",
-            "Jaga kebersihan rumah dan lingkungan sekitar",
-            "Kebiasaan Hijau",
-            "ic_bersihkan_lingkungan.png"
-        )
-    )
-
-    private var kategoriAktif = "Semua"
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentActivityBinding.inflate(
             inflater,
             container,
@@ -175,74 +38,80 @@ class ActivityFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        activityAdapter = ActivityAdapter(
-            requireContext(),
-            semuaAktivitas
-        )
-
-        binding.listViewActivity.adapter = activityAdapter
-
-        // Pilihan kategori menggunakan ChipGroup
-        binding.chipGroupKategori.setOnCheckedChangeListener { _, checkedId ->
-
-            val kategori = when (checkedId) {
-                binding.chipSemua.id -> "Semua"
-                binding.chipSampah.id -> "Sampah"
-                binding.chipEnergi.id -> "Energi"
-                binding.chipAir.id -> "Air"
-                binding.chipTransportasi.id -> "Transportasi"
-                binding.chipKebiasaanHijau.id -> "Kebiasaan Hijau"
-                else -> return@setOnCheckedChangeListener
-            }
-
-            tampilkanKategori(kategori)
-        }
-
-        // Pilih Semua sebagai kategori awal
-        binding.chipSemua.isChecked = true
-
-        // Aksi saat item aktivitas ditekan
-        binding.listViewActivity.setOnItemClickListener {
-                _, _, position, _ ->
-
-            val aktivitas = activityAdapter.getItem(position)
-
-            if (aktivitas != null) {
-                Toast.makeText(
-                    requireContext(),
-                    "${aktivitas.nama}: ${aktivitas.deskripsi}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-
         // Tombol kembali ke Home
         binding.toolbarActivity.setNavigationOnClickListener {
             (activity as? BaseActivity)?.bukaHome()
         }
-    }
 
-    private fun tampilkanKategori(kategori: String) {
-        kategoriAktif = kategori
+        val shape = ShapeAppearanceModel.builder()
+            .setAllCornerSizes(12f)
+            .build()
 
-        val dataFilter = if (kategori == "Semua") {
-            semuaAktivitas
-        } else {
-            semuaAktivitas.filter {
-                it.kategori == kategori
-            }
+        binding.tabLayoutActivity.background = MaterialShapeDrawable(shape).apply {
+            setTint(android.graphics.Color.parseColor("#DDEEDC"))
         }
 
-        activityAdapter = ActivityAdapter(
-            requireContext(),
-            dataFilter
+        // Membuat adapter ViewPager2
+        val tabsAdapter = ActivityTabsAdapter(
+            requireActivity()
         )
 
-        binding.listViewActivity.adapter = activityAdapter
+        binding.viewPagerActivity.adapter = tabsAdapter
+
+        // Menghubungkan TabLayout dan ViewPager2
+        TabLayoutMediator(
+            binding.tabLayoutActivity,
+            binding.viewPagerActivity
+        ) { tab, position ->
+
+            when (position) {
+                0 -> {
+                    tab.text = "Jelajahi"
+                    tab.icon = loadTabIcon("ic_kebiasaan_hijau.png")
+                }
+
+                1 -> {
+                    tab.text = "Favorit"
+                    tab.icon = loadTabIcon("ic_barang_pakai_ulang.png")
+                }
+
+                2 -> {
+                    tab.text = "Riwayat"
+                    tab.icon = loadTabIcon("ic_daur_ulang.png")
+                }
+
+                3 -> {
+                    tab.text = "Catatan"
+                }
+            }
+
+            tab.icon?.setBounds(
+                0,
+                0,
+                (24 * resources.displayMetrics.density).toInt(),
+                (24 * resources.displayMetrics.density).toInt()
+            )
+
+        }.attach()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun loadTabIcon(fileName: String): android.graphics.drawable.Drawable? {
+        return try {
+            val bitmap = requireContext().assets
+                .open("drawable-activity/$fileName")
+                .use { android.graphics.BitmapFactory.decodeStream(it) }
+
+            android.graphics.drawable.BitmapDrawable(resources, bitmap).apply {
+                val ukuran = (24 * resources.displayMetrics.density).toInt()
+                setBounds(0, 0, ukuran, ukuran)
+            }
+        } catch (e: Exception) {
+            null
+        }
     }
 }
